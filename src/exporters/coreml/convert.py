@@ -556,6 +556,7 @@ def export_pytorch(
         convert_to="neuralnetwork" if config.use_legacy_format else "mlprogram",
         compute_units=compute_units,
         **convert_kwargs,
+        skip_model_load=True
     )
 
     if restore_ops is not None:
