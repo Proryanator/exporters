@@ -382,6 +382,14 @@ class LlamaCoreMLConfig(CoreMLConfig):
 class CustomLlamaCoreMLConfig(CoreMLConfig):
     modality = "text"
 
+    @property
+    def inputs(self) -> OrderedDict[str, InputDescription]:
+        input_descs = super().inputs
+        # truncate inputs to 64 like the ready-made one is
+        input_descs["input_ids"].sequence_length = 64
+        input_descs["attention_mask"].sequence_length = 64
+        return input_descs
+
 
 class M2M100CoreMLConfig(CoreMLConfig):
     modality = "text"
