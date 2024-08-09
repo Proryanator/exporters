@@ -378,6 +378,11 @@ class LlamaCoreMLConfig(CoreMLConfig):
     modality = "text"
 
 
+# my own subclass to try and replicate the inputs/outputs of the llama2 other model
+class CustomLlamaCoreMLConfig(CoreMLConfig):
+    modality = "text"
+
+
 class M2M100CoreMLConfig(CoreMLConfig):
     modality = "text"
 
@@ -470,7 +475,7 @@ class SqueezeBertCoreMLConfig(CoreMLConfig):
 
 class T5CoreMLConfig(CoreMLConfig):
     modality = "text"
-    
+
     @property
     def _input_descriptions(self) -> OrderedDict[str, InputDescription]:
         if self.task == "feature-extraction":
